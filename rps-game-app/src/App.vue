@@ -118,11 +118,12 @@ onMounted(() => {
     <header class="container mx-auto p-6 bg-red-800 rounded-b-lg">
       <h2 class="text-2xl font-bold">You locked eyes with a trainer! It's time to fight.</h2>
       <br>
-      <h1 class="text-3xl">Pick your Pokémon Type</h1>
     </header>
 
     <main class="container mx-auto p-6 flex-1">
+
       <div v-if="playerChoice === null" class="mx-6">
+        <h1 class="text-3xl mb-4">Pick your Pokémon Type</h1>
 
         <div>
           <button @click="playGame('fire')"
