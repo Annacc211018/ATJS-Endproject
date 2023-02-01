@@ -9,6 +9,7 @@ const draws = ref(0)
 const playerChoice = ref(null)
 const computerChoice = ref(null)
 const result = ref(null)
+const loading = ref(true)
 
 const outcomes = {
   fire: {
@@ -48,16 +49,14 @@ const outcomes = {
   }
 }
 
-const loading = ref(true)
-
-const setLoading = () => {
-  loading.value = false
-}
-
 const winPercentage = computed(() => {
   const total = wins.value + losses.value + draws.value
   return total ? (wins.value / total) * 100 : 0
 })
+
+const setLoading = () => {
+  loading.value = false
+}
 
 const playGame = c => {
   playerChoice.value = c
@@ -116,13 +115,11 @@ onMounted(() => {
 
 <template>
   <div class="bg-neutral-800 text-white text-center min-h-screen flex flex-col">
-    <header class="container mx-auto p-6">
+    <header class="container mx-auto p-6 bg-red-800 rounded-b-lg">
       <h2 class="text-2xl font-bold">You locked eyes with a trainer! It's time to fight.</h2>
       <br>
       <h1 class="text-3xl">Pick your Pokémon Type</h1>
     </header>
-
-    <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
 
     <main class="container mx-auto p-6 flex-1">
       <div v-if="playerChoice === null" class="mx-6">
@@ -179,7 +176,7 @@ onMounted(() => {
 
           <div class="text-lg mb-4">
             {{ wins }} Wins : {{ draws }} Draws : {{ losses }} Losses <br>
-            Your personal win rate: {{ Math.round(winPercentage) }}%
+            Your personal win rate: <span class="font-bold">{{ Math.round(winPercentage) }}%</span>
           </div>
 
           <button @click="resetGame" class="bg-red-800 text-lg font-bold py-2 px-4 rounded-full">Fight Again!</button>
