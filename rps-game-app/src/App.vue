@@ -82,7 +82,7 @@ onMounted(() => {
             Your personal win rate: <span class="font-bold">{{ Math.round(store.winPercentage) }}%</span>
           </div>
 
-          <button @click="store.resetGame" class="bg-red-800 text-lg font-bold py-2 px-4 rounded-full">Fight Again!</button>
+          <button @click="store.resetGame" class="bg-red-800 text-lg font-bold py-2 px-4 rounded-full">Fight again!</button>
         </div>
       </div>
 
